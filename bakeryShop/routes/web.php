@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//url /public/
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::view('/menu', 'menu');
+
+Route::get('/menu/{macam}',function($macam){
+    return view('macam',['name'=>$macam]);
 });
