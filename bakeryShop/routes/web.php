@@ -23,3 +23,10 @@ Route::view('/menu', 'menu');
 Route::get('/menu/{macam}',function($macam){
     return view('macam',['name'=>$macam]);
 });
+
+Route::resource('product', 'ProductController');
+Route::resource('category', 'CategoryController');
+
+Route::get('/report/totalproducteachcategory',"CategoryController@totalproducteachcategory");
+
+Route::get('/report/showcake/{name}','CategoryController@showcake')->name('reportShowCake');
