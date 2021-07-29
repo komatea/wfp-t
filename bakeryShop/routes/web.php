@@ -26,7 +26,12 @@ Route::get('/menu/{macam}',function($macam){
 
 Route::resource('product', 'ProductController');
 Route::resource('category', 'CategoryController');
+Route::resource('supplier', 'SupplierController');
 
 Route::get('/report/totalproducteachcategory',"CategoryController@totalproducteachcategory");
 
 Route::get('/report/showcake/{name}','CategoryController@showcake')->name('reportShowCake');
+
+Route::get('/ceklayout', function () {
+    return view('layout.conquer');
+});

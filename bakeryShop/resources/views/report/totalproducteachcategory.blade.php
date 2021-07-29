@@ -18,6 +18,7 @@
         <th>ID</th>
         <th>Nama Kategori</th>
         <th>Jumlah Produk</th>
+        <th>Rata-rata Harga</th>
       </tr>
     </thead>
     <tbody>
@@ -26,6 +27,7 @@
         <td>{{$d->id}}</td>
         <td>{{$d->nama_kategori}}</td>
         <td>{{$d->jumlah}}</td>
+        <td>{{$d->rata}}</td>
       </tr>
       @endforeach
     </tbody>

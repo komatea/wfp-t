@@ -93,7 +93,7 @@ class CategoryController extends Controller
         // SELECT c.id, c.nama_kategori, COUNT(c.id)
         // FROM categories c INNER JOIN products p ON c.id= p.category_id
         // GROUP by c.id, c.nama_kategori  
-        $queryRaw = DB::select('SELECT c.id, c.nama_kategori, COUNT(c.id) as jumlah
+        $queryRaw = DB::select('SELECT c.id, c.nama_kategori, COUNT(c.id) as jumlah, AVG(p.harga_produk) as rata
                                 FROM categories c INNER JOIN products p ON c.id= p.category_id
                                 GROUP by c.id, c.nama_kategori  ');
         
@@ -117,7 +117,12 @@ class CategoryController extends Controller
        //Method 2: Eloquent Model with Relationship 
         $eloquentModel = Category::where('nama_kategori',$category_name)->first();
         $result = $eloquentModel->products;
-        $getTotalData = Product::count();
+        
+        //opsi 1 unyuk count product tiap kategori
+        // $getTotalData = Product::count()
+        //opsi 2:
+        $getTotalData = Category::where('jumlah',$category_name)->first();
+        
         return view('report.showcake',compact('category_name','result','getTotalData'));
     }    
 }
